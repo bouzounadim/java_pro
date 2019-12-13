@@ -19,6 +19,8 @@ public class UserService  {
 	return userrepo.findAll();
 	}
 
+	
+	
 
 	public User newuser(User user) 
 	{
