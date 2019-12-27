@@ -35,33 +35,33 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" th:href="@{'/admin'}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./listuser.html">
+             <li class="nav-item ">
+            <a class="nav-link" th:href="@{'/admin/listteacher'}">
               <i class="material-icons">person</i>
-              <p>List utlisateur</p>
+              <p>Listes des Enseignants</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" th:href="@{'/admin/listuser'}">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Listes des Etudiants</p>
             </a>
           </li>
-          <li class="nav-item ">
+            <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <p>Listes des cours </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+           <li class="nav-item ">
+            <a class="nav-link" href="./typography.html">
+              <i class="material-icons">library_books</i>
+              <p>Ajouter des cours </p>
             </a>
           </li>
         </ul>
@@ -152,10 +152,12 @@
       <td th:text="${users.username}" ></td>
       <td th:text="${users.email}"></td>
       <td th:text="${users.phone}"></td>
+       <td><button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> </button>  <button type="button" class="btn btn-alert"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+      
     </tr>
     <tr>
   </tbody>
-</table>
+
                     </div>
                 </div>
        

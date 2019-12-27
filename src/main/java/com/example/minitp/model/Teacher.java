@@ -29,7 +29,7 @@ public class Teacher {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int teacher_id;
+	private Long teacher_id;
 	
 	@JoinColumn(name="teacher_id",referencedColumnName="user_id",insertable=false,updatable=false)
 	@OneToOne(optional=false)
