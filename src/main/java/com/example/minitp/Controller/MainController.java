@@ -7,54 +7,53 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.minitp.Services.UserService;
 import com.example.minitp.model.User;
 import com.example.minitp.repositry.UserRepo;
 
-@RestController
+@Controller
 public class MainController {
-	@Autowired
-    private UserService  userservice;
-	@Autowired
-    private UserRepo repository;
-	
-	
-	@GetMapping("/getusers")
-    public List<User> getusers() 
-	{
-      return userservice.findalluser();
-	}
-	
-	@GetMapping("/user/{id}")
-	public Optional<User> retrieveStudent(@PathVariable long id)  {
-		 Optional<User> user = userservice.findid(id);
 
-		return user;
-	}
-	 @PostMapping("/user")
-	    public User createEmployee(@Valid @RequestBody User user) {
-	        return userservice.newuser(user);
+	@Autowired
+	UserRepo repo;
+	
+	 @RequestMapping("/")
+	    public String home() {
+	        return "home/index";
 	    }
-	 
-	 
-	 @DeleteMapping("/user/delete/{id}")
-	    public void createEmployee(@PathVariable long id) {
-	        userservice.deletebyid(id);
+	
+	 @RequestMapping("/login")
+	    public String login() {
+	        return "home/login";
 	    }
-	 
-	 
-	 @PutMapping("/user/update/{id}")
-	 public void updateuser(@RequestBody User newuser, @PathVariable Long id) {
-		 userservice.update(newuser,id);
-		 }
-	 
-	 
+	
+
+	 @RequestMapping("/loginattempt")
+	    public String loginauth(@RequestParam(value = "email", required = false) String email,@RequestParam(value = "password", required = false) String password,Model model) {
+           User user=repo.login(email,password);
+            if(user != null) {
+            	System.out.println(user);
+            model.addAttribute("user",user);
+            return "home/index";
+            }
+            else{
+           	 return "redirect:/home/login";
+            }
+           
+ 
+          
+	    }
+	
 }

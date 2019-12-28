@@ -27,4 +27,17 @@ public  List<Teacher> findallteacher()
 }
 
 
+public void deleteById(Long id) {
+    
+	techerrepo.deleteById(id);
+}
+
+
+public Optional<Teacher> findbyId(Long id) {
+	return techerrepo.findById(id);
+	// TODO Auto-generated method stub
+	
+}
+
+
 }
