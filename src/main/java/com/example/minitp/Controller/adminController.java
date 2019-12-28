@@ -83,7 +83,6 @@ public class adminController {
 	    }
 	  @GetMapping("admin/payment")
 	    public String gestionpayment( Model model){
-	    
 	        return "admin/showteacher";	      
 	    }
 	  
